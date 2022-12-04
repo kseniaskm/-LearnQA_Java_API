@@ -43,4 +43,10 @@ public class Assertions {
     public static void assertJsonHasNotKey(Response Response, String unexpectedKey) {
         Response.then().assertThat().body("$", not(hasKey(unexpectedKey)));
     }
+
+    public static void assertJsonHasNotKeys(Response Response, String[] unexpectedKeys) {
+        for (String unexpectedKey : unexpectedKeys) {
+            Assertions.assertJsonHasNotKey(Response, unexpectedKey);
+        }
+    }
 }
