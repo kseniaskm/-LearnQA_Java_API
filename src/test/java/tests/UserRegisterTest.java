@@ -74,7 +74,7 @@ public class UserRegisterTest {
     }
 
     @Test
-    public void testPositiveCreateUserWithLongName() {
+    public void testNegativeCreateUserWithLongName() {
         String username = "Jqjgnpfvykqsmakahhorprrdemzaycnlbckriecvqkiljnauaxdgmwbxllecihoaisgbqditfqgjttpjvhzbhnloqttsujqdojizrzwzaauapnshpxpbzpxftguqfnexjnmeebjbykwbtgjrshptsblmkpbtsnzcxwqrubvirxkcrupwotwxsdeqpjcxmkbsufurfrplybzzoyiemlavvjmoknhkuhaygeyqrezqbpcexsrybqhbuxmgqwi";
         Map<String, String> userData = new HashMap<>();
         userData.put("username", username);
