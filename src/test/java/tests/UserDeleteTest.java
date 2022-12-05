@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.BaseTestCase;
 import lib.Assertions;
@@ -10,6 +11,12 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.DisplayName;
+
+import static io.qameta.allure.SeverityLevel.*;
+
+@Epic("Delete cases")
+@Feature("Delete users")
 public class UserDeleteTest extends BaseTestCase {
 
     private final String baseUrl = "https://playground.learnqa.ru/api/user/";
@@ -17,6 +24,10 @@ public class UserDeleteTest extends BaseTestCase {
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
     @Test
+    @Description("This test checks that admin users from special list can't be deleted")
+    @DisplayName("Test not delete admin")
+    @Severity(NORMAL)
+    @Story("Jira-1: Don't delete admin users")
     public void testNegativeDeleteAdmin() {
         //authorize as an admin
         Map<String, String> authData = new HashMap<>();
@@ -33,6 +44,10 @@ public class UserDeleteTest extends BaseTestCase {
     }
 
     @Test
+    @Description("This test successfully deletes a user")
+    @DisplayName("Test delete user")
+    @Severity(BLOCKER)
+    @Story("Jira-2: It should be possible to delete an authorized user")
     public void testPositiveDeleteUser() {
 
         //create a new user to take his id for edit
@@ -60,6 +75,10 @@ public class UserDeleteTest extends BaseTestCase {
     }
 
     @Test
+    @Description("This test does not delete not authorized user")
+    @DisplayName("Test does not delete another user")
+    @Severity(CRITICAL)
+    @Story("Jira-2: It should be possible to delete an authorized user")
     public void testNegativeDeleteWithNotThatUserAuth() {
 
         //create a new user to take his id for delete
